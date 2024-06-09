@@ -7,8 +7,8 @@ export default {
 	driver: 'turso',
 	dbCredentials: {
 		// connectionString: env.DATABASE_URL,
-		url: env.DB_URL,
-		authToken: env.DB_AUTH_TOKEN
+		url: process.env.DB_URL!,
+		authToken: process.env.DB_AUTH_TOKEN
 		//#ts-ignore - ssl is not in the types
 	},
 	tablesFilter: ['dz_*'],

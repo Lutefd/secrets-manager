@@ -2,6 +2,8 @@ import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 import { createId } from '@paralleldrive/cuid2';
 import { relations } from 'drizzle-orm';
 
+export type DatabaseUser = typeof users.$inferSelect;
+
 export const users = sqliteTable('users', {
 	id: text('id').$defaultFn(createId).primaryKey(),
 	name: text('name').notNull(),

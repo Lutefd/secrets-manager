@@ -10,6 +10,10 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
+		"db:studio": "drizzle-kit studio",
+		"db:migrate": "drizzle-kit migrate",
+		"db:generate": "drizzle-kit generate",
+		"db:push": "drizzle-kit push",
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest"

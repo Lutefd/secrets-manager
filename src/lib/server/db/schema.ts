@@ -22,10 +22,7 @@ export const sessionTable = sqliteTable('session', {
 	userId: text('user_id')
 		.notNull()
 		.references(() => users.id, { onDelete: 'cascade' }),
-	is_oauth: integer('is_oauth', { mode: 'boolean' }).$defaultFn(() => false),
-	expiresAt: integer('expires_at', {
-		mode: 'timestamp'
-	}).notNull()
+	expiresAt: integer('expires_at').notNull()
 });
 export const sessionRelations = relations(sessionTable, ({ one }) => ({
 	user: one(users, {
@@ -129,9 +126,6 @@ export const customersRelations = relations(customers, ({ many }) => ({
 export const developersToCustomers = sqliteTable(
 	'developers_to_customers',
 	{
-		id: text('id')
-			.$defaultFn(() => createId())
-			.notNull(),
 		developerId: text('developer_id')
 			.notNull()
 			.references(() => users.id, {
@@ -149,3 +143,14 @@ export const developersToCustomers = sqliteTable(
 		pk: primaryKey({ columns: [t.developerId, t.customerId] })
 	})
 );
+
+export const developersToCustomersRelations = relations(developersToCustomers, ({ one }) => ({
+	customer: one(customers, {
+		fields: [developersToCustomers.customerId],
+		references: [customers.id]
+	}),
+	developer: one(users, {
+		fields: [developersToCustomers.developerId],
+		references: [users.id]
+	})
+}));

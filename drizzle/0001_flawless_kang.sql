@@ -1,0 +1,1 @@
+ALTER TABLE `developers_to_customers` DROP COLUMN `id`;

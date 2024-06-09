@@ -1,8 +1,8 @@
 import { type Config } from 'drizzle-kit';
-import { env } from './src/lib/env.js';
+import { env } from './src/lib/env.ts';
 
 export default {
-	schema: './server/db/schema.ts',
+	schema: './src/lib/server/db/schema.ts',
 	dialect: 'sqlite',
 	driver: 'turso',
 	dbCredentials: {
